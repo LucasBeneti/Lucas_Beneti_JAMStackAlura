@@ -1,18 +1,15 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Head from 'next/head';
+import useDarkMode from 'use-dark-mode';
 
-import theme from '../src/theme';
 import { GlobalStyle } from '../src/theme/GlobalStyle';
-// const GlobalStyle = createGlobalStyle`
-//   body {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//   }
-// `;
+import { lightTheme, darkTheme } from '../src/theme';
 
 export default function App({ Component, pageProps }) {
+  const { value } = useDarkMode(false, { storageKey: null, onChange: null });
+  const theme = value ? darkTheme : lightTheme;
+
   return (
     <>
       <Head>

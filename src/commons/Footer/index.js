@@ -11,12 +11,13 @@ const FooterWrapper = styled.footer`
   padding-right: 28px;
   padding-left: 28px;
   margin-top: auto;
+  background: transparent;
   img {
     width: 58px;
     margin-right: 23px;
   }
   a {
-    color: ${({ theme }) => theme.colors.primary.main.color};
+    color: ${({ theme }) => theme.text.primary};
     text-decoration: none;
     transition: 0.3s;
     &:hover,

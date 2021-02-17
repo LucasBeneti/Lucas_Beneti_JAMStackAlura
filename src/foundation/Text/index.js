@@ -5,16 +5,19 @@ import propToStyle from '../../theme/utils/propToStyle';
 
 export const TextVariantMap = {
   simpleText: css`
+    color: ${({ theme }) => theme.text.primary};
     font-size: ${({ theme }) => theme.typographyVariants.basicText.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.basicText.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.basicText.lineHeight};
   `,
   title: css`
+    color: ${({ theme }) => theme.text.primary};
     font-size: ${({ theme }) => theme.typographyVariants.title.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.title.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.title.lineHeight};
   `,
   footer: css`
+    color: ${({ theme }) => theme.text.secondary};
     font-size: ${({ theme }) => theme.typographyVariants.subtext.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.subtext.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.subtext.lineHeight};

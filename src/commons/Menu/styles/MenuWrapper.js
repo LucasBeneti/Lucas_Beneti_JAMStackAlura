@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { TextVariantMap } from '../../../foundation/Text';
-import { breakpointsMedia } from '../../../theme/utils/breakpointsMedi';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 export const MenuWrapper = styled.nav`
   font-family: 'Montserrat', sans-serif;
@@ -14,6 +14,8 @@ export const MenuWrapper = styled.nav`
 
   min-width: 60vw;
   max-width: 75vw;
+
+  background-color: ${({ theme }) => theme.background.secondary};
 `;
 
 MenuWrapper.Left = styled.div`

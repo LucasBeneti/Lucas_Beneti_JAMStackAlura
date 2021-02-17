@@ -1,20 +1,28 @@
 import { typographyVariants } from './typographyVariants';
 
-const colors = {
+const light = {
   background: {
-    light: {
-      color: '#FFF',
-    },
+    primary: '#FFF',
+    secondary: '#dedede',
   },
-  primary: {
-    main: {
-      color: '#dedede',
-    },
+  text: {
+    primary: '#000',
+    secondary: '#dedede',
   },
 };
 
-export default {
-  colors,
+const dark = {
+  background: {
+    primary: '#000',
+    secondary: '#dedede',
+  },
+  text: {
+    primary: '#FFF',
+    secondary: '#dedede',
+  },
+};
+
+export const defaultStyles = {
   typographyVariants,
   breakpoints: {
     xs: 0,
@@ -27,3 +35,6 @@ export default {
   fontFamily: "'Montserrat', sans-serif",
   transition: '200ms ease-in-out',
 };
+
+export const lightTheme = { ...defaultStyles, ...light };
+export const darkTheme = { ...defaultStyles, ...dark };
