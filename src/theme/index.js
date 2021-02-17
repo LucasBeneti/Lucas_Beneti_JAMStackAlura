@@ -13,12 +13,14 @@ const light = {
 
 const dark = {
   background: {
-    primary: '#000',
-    secondary: '#dedede',
+    primary: '#121212',
+    secondary: '#212121',
+    terciary: '#333333',
   },
   text: {
-    primary: '#FFF',
-    secondary: '#dedede',
+    primary: '#E3E3E3',
+    secondary: '#BDBDBD',
+    terciary: '#969696',
   },
 };
 

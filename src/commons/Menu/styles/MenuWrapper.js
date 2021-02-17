@@ -8,18 +8,19 @@ export const MenuWrapper = styled.nav`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 18px;
   padding-left: 28px;
   padding-right: 28px;
 
-  min-width: 60vw;
-  max-width: 75vw;
-
   background-color: ${({ theme }) => theme.background.secondary};
+  border-radius: 0.5em;
+
+  min-width: 60vw;
+  height: auto;
+  max-width: 75vw;
 `;
 
 MenuWrapper.Left = styled.div`
-  padding: 0;
+  padding: 0.5em;
   margin: 0;
   order: -1;
 

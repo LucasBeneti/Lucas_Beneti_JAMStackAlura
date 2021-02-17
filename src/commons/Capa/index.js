@@ -13,7 +13,7 @@ const CapaWrapper = styled.div`
 export const Capa = () => (
   <CapaWrapper>
     <Text tag="p" variant="title">
-      Lucas Silva Beneti
+      Lucas Beneti
     </Text>
   </CapaWrapper>
 );

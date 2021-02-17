@@ -7,11 +7,11 @@ const FooterWrapper = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   padding-right: 28px;
   padding-left: 28px;
   margin-top: auto;
-  background: transparent;
+  background: ${({ theme }) => theme.background.terciary};
   img {
     width: 58px;
     margin-right: 23px;
