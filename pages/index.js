@@ -3,7 +3,7 @@ import React from 'react';
 import { Cabecalho } from '../src/commons/Cabecalho';
 import { Capa } from '../src/commons/Capa';
 import { Footer } from '../src/commons/Footer';
-
+import { MainContainer } from '../src/commons/MainContainer';
 // const Title = styled.h1`
 //   font-size: 50px;
 //   color: ${({ theme }) => theme.colors.primary};
@@ -26,6 +26,7 @@ export default function Home() {
     >
       <Capa />
       <Cabecalho />
+      <MainContainer />
       <Footer />
     </div>
   );

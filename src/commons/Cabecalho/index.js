@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Menu } from '../Menu';
-// import {CabecalhoWrapper} from './styles/CabecalhoWrapper';
 
 const CabecalhoWrapper = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.background.primary};
 `;
 
 export const Cabecalho = () => {

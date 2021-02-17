@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { TextVariantMap } from '../../../foundation/Text';
-import { breakpointsMedia } from '../../../theme/utils/breakpointsMedi';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 export const MenuWrapper = styled.nav`
   font-family: 'Montserrat', sans-serif;
@@ -8,16 +8,19 @@ export const MenuWrapper = styled.nav`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 18px;
   padding-left: 28px;
   padding-right: 28px;
 
+  background-color: ${({ theme }) => theme.background.secondary};
+  border-radius: 0.5em;
+
   min-width: 60vw;
+  height: auto;
   max-width: 75vw;
 `;
 
 MenuWrapper.Left = styled.div`
-  padding: 0;
+  padding: 0.5em;
   margin: 0;
   order: -1;
 
