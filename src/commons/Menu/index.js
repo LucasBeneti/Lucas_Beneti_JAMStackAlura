@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { MenuWrapper } from './styles/MenuWrapper';
 import { Text } from '../../foundation/Text';
-import { Logo } from '../../theme/Logo';
+import { Logo } from '../../theme/Icons/Logo';
 
 export const Menu = ({ linksList }) => (
   <>

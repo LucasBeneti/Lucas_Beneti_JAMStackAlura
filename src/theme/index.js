@@ -8,6 +8,7 @@ const light = {
   text: {
     primary: '#000',
     secondary: '#dedede',
+    terciary: '#000',
   },
 };
 

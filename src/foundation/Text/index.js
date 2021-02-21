@@ -16,8 +16,26 @@ export const TextVariantMap = {
     font-weight: ${({ theme }) => theme.typographyVariants.title.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.title.lineHeight};
   `,
+  subtitle: css`
+    color: ${({ theme }) => theme.text.primary};
+    font-size: ${({ theme }) => theme.typographyVariants.subtitle.fontSize};
+    font-weight: ${({ theme }) => theme.typographyVariants.subtitle.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subtitle.lineHeight};
+  `,
+  titleXS: css`
+    color: ${({ theme }) => theme.text.primary};
+    font-size: ${({ theme }) => theme.typographyVariants.titleXS.fontSize};
+    font-weight: ${({ theme }) => theme.typographyVariants.titleXS.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.titleXS.lineHeight};
+  `,
+  subtext: css`
+    color: ${({ theme }) => theme.text.primary};
+    font-size: ${({ theme }) => theme.typographyVariants.subtext.fontSize};
+    font-weight: ${({ theme }) => theme.typographyVariants.subtext.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subtext.lineHeight};
+  `,
   footer: css`
-    color: ${({ theme }) => theme.text.secondary};
+    color: ${({ theme }) => theme.text.terciary};
     font-size: ${({ theme }) => theme.typographyVariants.subtext.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.subtext.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.subtext.lineHeight};

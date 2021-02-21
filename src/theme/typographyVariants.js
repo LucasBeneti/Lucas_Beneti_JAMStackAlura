@@ -1,6 +1,11 @@
 export const typographyVariants = {
   title: {
-    fontSize: '2em',
+    fontSize: '3.5em',
+    fontWeight: '700',
+    lineHeight: 1.25,
+  },
+  subtitle: {
+    fontSize: '2.5em',
     fontWeight: '700',
     lineHeight: 1.25,
   },
