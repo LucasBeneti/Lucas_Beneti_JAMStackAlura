@@ -10,7 +10,13 @@ const CardWrapper = styled.div`
   background-color: '#BBB';
 
   border-radius: 0.5em;
-  background-color: red;
+  background: ${({ theme }) => theme.background.secondary};
+
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 CardWrapper.Text = styled.div`
@@ -23,18 +29,21 @@ CardWrapper.Text = styled.div`
 
 CardWrapper.Image = styled.div`
   display: grid;
-  border-radius: 0.5em;
   img {
-    object-fit: contain;
+    object-fit: fit;
     width: 100%;
     height: 100%;
+
+    /* solucao temporaria */
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
   }
 `;
 
-export const Card = ({ title, subtitle, imgSource }) => (
+export const Card = ({ title, subtitle, imgSource, highlight }) => (
   <CardWrapper>
     <CardWrapper.Text>
-      <Text tag="span" variant="titleXS">
+      <Text tag="span" variant={highlight ? 'titleXS' : 'basicText'}>
         {title}
       </Text>
       <Text tag="span" variant="subtext">
@@ -51,4 +60,9 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   imgSource: PropTypes.string.isRequired,
+  highlight: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  highlight: false,
 };

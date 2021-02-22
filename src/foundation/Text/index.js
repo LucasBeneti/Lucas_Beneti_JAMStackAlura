@@ -28,6 +28,12 @@ export const TextVariantMap = {
     font-weight: ${({ theme }) => theme.typographyVariants.titleXS.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.titleXS.lineHeight};
   `,
+  basicText: css`
+    color: ${({ theme }) => theme.text.primary};
+    font-size: ${({ theme }) => theme.typographyVariants.basicText.fontSize};
+    font-weight: ${({ theme }) => theme.typographyVariants.basicText.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.basicText.lineHeight};
+  `,
   subtext: css`
     color: ${({ theme }) => theme.text.primary};
     font-size: ${({ theme }) => theme.typographyVariants.subtext.fontSize};

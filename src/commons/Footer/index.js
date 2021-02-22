@@ -8,15 +8,10 @@ const FooterWrapper = styled.footer`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  /* border-radius: 4px; */
   padding-right: 28px;
   padding-left: 28px;
   margin-top: auto;
   background: ${({ theme }) => theme.background.secondary};
-  img {
-    width: 58px;
-    margin-right: 23px;
-  }
 
   a {
     color: ${({ theme }) => theme.text.primary};
@@ -44,8 +39,6 @@ FooterWrapper.Links = styled.span`
   align-items: center;
 `;
 
-// depois colocar os icones de github e linkedin
-// construindo um
 export const Footer = (props) => (
   <FooterWrapper {...props}>
     <FooterWrapper.Text>

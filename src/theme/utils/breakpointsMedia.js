@@ -1,10 +1,9 @@
 import { css } from 'styled-components';
-import { defaultStyles } from '../index';
+import { lightTheme } from '../index';
 
-const { breakpoints } = defaultStyles;
+const { breakpoints } = lightTheme;
 export function breakpointsMedia(cssByBreakpoints) {
   const breakpointsNames = Object.keys(cssByBreakpoints);
-
   return breakpointsNames.map(
     (breakpointName) => css`
       @media screen and (min-width: ${breakpoints[breakpointName]}px) {

@@ -12,7 +12,7 @@ const CapaWrapper = styled.div`
 
 export const Capa = () => (
   <CapaWrapper>
-    <Text tag="p" variant="title">
+    <Text tag="p" variant="title" whiteSpace="wrap">
       Lucas Beneti
     </Text>
   </CapaWrapper>
