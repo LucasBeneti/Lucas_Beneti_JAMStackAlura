@@ -24,7 +24,7 @@ MenuWrapper.Left = styled.div`
   margin: 0;
   order: -1;
 
-  display: flex;
+  /* display: flex; */
   justify-content: flex-start;
 `;
 

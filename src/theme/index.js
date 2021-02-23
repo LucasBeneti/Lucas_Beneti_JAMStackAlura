@@ -2,13 +2,17 @@ import { typographyVariants } from './typographyVariants';
 
 const light = {
   background: {
-    primary: '#FFF',
-    secondary: '#dedede',
+    primary: '#338E4F',
+    // primary: '#000',
+    secondary: '#FFF',
   },
   text: {
-    primary: '#000',
-    secondary: '#dedede',
+    primary: '#073615',
+    secondary: '#FFF',
     terciary: '#000',
+  },
+  svgIcons: {
+    primary: '#FFF',
   },
 };
 

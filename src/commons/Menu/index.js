@@ -9,7 +9,7 @@ export const Menu = ({ linksList }) => (
   <>
     <MenuWrapper>
       <MenuWrapper.Left>
-        <Logo width="2.5em" height="2.5em" />
+        <Logo width="2.5em" height="2.5em" color={({ theme }) => theme.svgIcons.primary} />
       </MenuWrapper.Left>
       <MenuWrapper.Central>
         {linksList.map((item) => (

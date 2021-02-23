@@ -7,6 +7,11 @@ const CapaWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-image: url('images/background.svg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-color: ${({ theme }) => theme.background.primary};
 `;
 
