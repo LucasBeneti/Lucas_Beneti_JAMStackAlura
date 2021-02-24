@@ -24,7 +24,6 @@ export default function Home() {
         minHeight: '100vh',
       }}
     >
-      <Capa />
       <Cabecalho />
       <MainContainer />
       <Footer />

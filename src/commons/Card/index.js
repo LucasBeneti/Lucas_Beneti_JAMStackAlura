@@ -7,13 +7,12 @@ import { Text } from '../../foundation/Text';
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: '#BBB';
 
   border-radius: 0.5em;
-  background: ${({ theme }) => theme.background.secondary};
+  background: ${({ theme }) => theme.background.terciary};
 
   transition: transform 0.2s;
-
+  margin: 0.5rem;
   &:hover {
     transform: scale(1.05);
   }
@@ -23,6 +22,7 @@ CardWrapper.Text = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: ${({ theme }) => theme.text.secondary};
 
   margin-left: 2rem;
 `;

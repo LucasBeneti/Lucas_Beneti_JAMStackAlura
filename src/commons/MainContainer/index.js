@@ -2,74 +2,84 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Card } from '../Card';
-import { Text } from '../../foundation/Text';
-import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
 const MainContainerWrapper = styled.div`
   width: 100%;
   height: auto;
-  padding: 2rem 3rem 0 3rem;
-  display: flex;
-  flex-direction: column;
-  /* grid-template-rows: 3fr 1fr; */
+  padding: 1rem 10rem 0 10rem;
 
-  /* flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  max-width: 80%;
-  align-self: center;
-  /* justify-self: center; */
-
-  background-color: ${({ theme }) => theme.background.primary};
+  background-color: ${({ theme }) => theme.background.secondary};
 `;
 
-// fazer um elemento de Row pra colocar, talvez ver se rola passar prop ou algo assim
-MainContainerWrapper.RowDisplay = styled.div`
+MainContainerWrapper.Grid = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
+MainContainerWrapper.Column = styled.span`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  ${breakpointsMedia({
-    xs: css`
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-content: center;
-    `,
-    md: css`
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    `,
-  })}
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100%;
+  width: auto;
 `;
 
-MainContainerWrapper.Highlight = styled.div`
-  display: flex;
-  padding: 2rem 0 2rem 0;
-  justify-content: center;
-  align-content: center;
+MainContainerWrapper.Row1 = styled.span`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* gap: 1rem; */
+  width: 100%auto;
+`;
+MainContainerWrapper.Row2 = styled.span`
   width: 100%;
+  display: grid;
+  margin-top: 1rem;
 `;
 
-MainContainerWrapper.Title = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+MainContainerWrapper.CardContainer = styled.span`
+  padding: 0.5rem;
 `;
 
 export const MainContainer = () => (
   <MainContainerWrapper>
-    <MainContainerWrapper.Title>
-      <Text variant="subtitle">Projetos</Text>
-    </MainContainerWrapper.Title>
-    <MainContainerWrapper.Highlight>
-      <Card title="Titulo base" subtitle="subtitulo apenas para teste" imgSource="images/code_bg.jpg" highlight />
-    </MainContainerWrapper.Highlight>
-    <MainContainerWrapper.RowDisplay>
-      <Card title="Titulo base" subtitle="subtitulo apenas para teste" imgSource="images/code_bg.jpg" />
-      <Card title="Titulo base" subtitle="subtitulo apenas para teste" imgSource="images/code_bg.jpg" />
-      <Card title="Titulo base" subtitle="subtitulo apenas para teste" imgSource="images/code_bg.jpg" />
-    </MainContainerWrapper.RowDisplay>
+    <MainContainerWrapper.Grid>
+      <MainContainerWrapper.Row1>
+        <Card
+          className="highlightProject"
+          title="Titulo base"
+          subtitle="subtitulo apenas para teste"
+          imgSource="images/code_bg.jpg"
+          highlight
+        />
+
+        <MainContainerWrapper.Column>
+          <Card
+            className="simpleProject"
+            title="Titulo base"
+            subtitle="subtitulo apenas para teste"
+            imgSource="images/code_bg.jpg"
+          />
+          <Card
+            className="simpleProject"
+            title="Titulo base"
+            subtitle="subtitulo apenas para teste"
+            imgSource="images/code_bg.jpg"
+          />
+          <Card
+            className="simpleProject"
+            title="Titulo base"
+            subtitle="subtitulo apenas para teste"
+            imgSource="images/code_bg.jpg"
+          />
+        </MainContainerWrapper.Column>
+      </MainContainerWrapper.Row1>
+      <MainContainerWrapper.Row2>
+        <Card
+          className="descriptionArea"
+          title="Titulo base"
+          subtitle="subtitulo apenas para teste"
+          imgSource="images/code_bg.jpg"
+        />
+      </MainContainerWrapper.Row2>
+    </MainContainerWrapper.Grid>
   </MainContainerWrapper>
 );

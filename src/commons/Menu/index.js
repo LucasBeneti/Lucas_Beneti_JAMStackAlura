@@ -8,10 +8,10 @@ import { Logo } from '../../theme/Icons/Logo';
 export const Menu = ({ linksList }) => (
   <>
     <MenuWrapper>
-      <MenuWrapper.Left>
-        <Logo width="2.5em" height="2.5em" color={({ theme }) => theme.svgIcons.primary} />
-      </MenuWrapper.Left>
       <MenuWrapper.Central>
+        <Logo width="10rem" height="10rem" color={({ theme }) => theme.svgIcons.primary} />
+      </MenuWrapper.Central>
+      <MenuWrapper.RightSide>
         {linksList.map((item) => (
           <li key={item.url}>
             <Text tag="a" href={item.url}>
@@ -19,7 +19,7 @@ export const Menu = ({ linksList }) => (
             </Text>
           </li>
         ))}
-      </MenuWrapper.Central>
+      </MenuWrapper.RightSide>
     </MenuWrapper>
   </>
 );

@@ -3,13 +3,14 @@ import { typographyVariants } from './typographyVariants';
 const light = {
   background: {
     primary: '#338E4F',
-    // primary: '#000',
     secondary: '#FFF',
+    terciary: '#F4F4F4',
+    footer: '#338E4F',
   },
   text: {
-    primary: '#073615',
-    secondary: '#FFF',
-    terciary: '#000',
+    primary: '#FFF',
+    secondary: '#073615',
+    terciary: '#FFF',
   },
   svgIcons: {
     primary: '#FFF',
@@ -18,14 +19,19 @@ const light = {
 
 const dark = {
   background: {
-    primary: '#121212',
-    secondary: '#212121',
-    terciary: '#333333',
+    primary: '#072C12',
+    secondary: '#191919',
+    terciary: '#2B2B2B',
+    footer: '#072C12',
   },
   text: {
-    primary: '#E3E3E3',
-    secondary: '#BDBDBD',
-    terciary: '#969696',
+    primary: '#FFF',
+    secondary: '#C6C6C6',
+    terciary: '#338E4F',
+  },
+  svgIcons: {
+    primary: '#FFF',
+    secondary: '#338E4F',
   },
 };
 

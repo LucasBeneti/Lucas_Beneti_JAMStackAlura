@@ -11,7 +11,7 @@ const FooterWrapper = styled.footer`
   padding-right: 28px;
   padding-left: 28px;
   margin-top: auto;
-  background: ${({ theme }) => theme.background.secondary};
+  background: ${({ theme }) => theme.background.footer};
 
   a {
     color: ${({ theme }) => theme.text.primary};
@@ -29,6 +29,8 @@ FooterWrapper.Text = styled.div`
   justify-self: flex-end;
   align-self: flex-end;
   margin-left: 1em;
+
+  color: ${({ theme }) => theme.text.terciary};
 `;
 
 FooterWrapper.Links = styled.span`
