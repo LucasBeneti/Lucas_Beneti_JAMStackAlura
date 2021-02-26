@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import { normalize, css } from 'styled-normalize';
 
 // CSS Reset
 export const GlobalStyle = createGlobalStyle`
@@ -17,12 +17,15 @@ export const GlobalStyle = createGlobalStyle`
   /* Full height layout */
   html, body {
     display: flex;
+    justify-content: center;
     min-height: 100vh;
     width: 100%;
+    overflow-x: hidden;
   }
   #__next {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background: ${({ theme }) => theme.background.secondary};
   }
 `;

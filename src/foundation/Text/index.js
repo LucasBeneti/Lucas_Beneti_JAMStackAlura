@@ -16,6 +16,13 @@ export const TextVariantMap = {
     font-weight: ${({ theme }) => theme.typographyVariants.title.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.title.lineHeight};
   `,
+
+  secondTitle: css`
+    color: ${({ theme }) => theme.text.primary};
+    font-size: ${({ theme }) => theme.typographyVariants.secondTitle.fontSize};
+    font-weight: ${({ theme }) => theme.typographyVariants.secondTitle.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.secondTitle.lineHeight};
+  `,
   subtitle: css`
     color: ${({ theme }) => theme.text.primary};
     font-size: ${({ theme }) => theme.typographyVariants.subtitle.fontSize};

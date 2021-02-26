@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Text } from '../../foundation/Text';
+import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
 const CardWrapper = styled.div`
   display: grid;
@@ -14,7 +15,7 @@ const CardWrapper = styled.div`
   transition: transform 0.2s;
   margin: 0.5rem;
   &:hover {
-    transform: scale(1.05);
+    transform: translateY(-0.5rem);
   }
 `;
 
@@ -24,7 +25,12 @@ CardWrapper.Text = styled.div`
   justify-content: center;
   color: ${({ theme }) => theme.text.secondary};
 
-  margin-left: 2rem;
+  margin-left: 1rem;
+  ${breakpointsMedia({
+    xl: css`
+      margin-left: 2rem;
+    `,
+  })}
 `;
 
 CardWrapper.Image = styled.div`

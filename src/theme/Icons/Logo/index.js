@@ -1,16 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { breakpointsMedia } from '../../utils/breakpointsMedia';
 
 const LogoWrapper = styled.span`
+  height: 5rem;
+  width: 5rem;
+  ${breakpointsMedia({
+    md: css`
+      height: 6rem;
+      width: 6rem;
+    `,
+    lg: css`
+      height: 7.5rem;
+      width: 7.5rem;
+    `,
+    xl: css`
+      height: 10rem;
+      width: 10rem;
+    `,
+  })}
+
   .logo {
     fill: ${({ theme }) => theme.svgIcons.primary};
   }
 `;
 
-export const Logo = ({ width, height }) => (
+export const Logo = () => (
   <LogoWrapper>
-    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 206.42 208.351">
+    <svg xmlns="http://www.w3.org/2000/svg" width={'auto'} height={'auto'} viewBox="0 0 206.42 208.351">
       <g transform="translate(-105.8 -92.63)">
         <g transform="translate(105.8 127.802)">
           <path
@@ -28,8 +47,3 @@ export const Logo = ({ width, height }) => (
     </svg>
   </LogoWrapper>
 );
-
-Logo.propTypes = {
-  width: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
-};
