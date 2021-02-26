@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import theme from '../index';
+import { lightTheme } from '../index';
 
-const { breakpoints } = theme;
+const { breakpoints } = lightTheme;
 export function breakpointsMedia(cssByBreakpoints) {
   const breakpointsNames = Object.keys(cssByBreakpoints);
   return breakpointsNames.map(

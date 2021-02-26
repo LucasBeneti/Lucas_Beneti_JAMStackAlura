@@ -3,25 +3,23 @@ import PropTypes from 'prop-types';
 
 import { MenuWrapper } from './styles/MenuWrapper';
 import { Text } from '../../foundation/Text';
-import { Logo } from '../../theme/Logo';
+import { Logo } from '../../theme/Icons/Logo';
 
 export const Menu = ({ linksList }) => (
-  <>
-    <MenuWrapper>
-      <MenuWrapper.Left>
-        <Logo width="2.5em" height="2.5em" />
-      </MenuWrapper.Left>
-      <MenuWrapper.Central>
-        {linksList.map((item) => (
-          <li key={item.url}>
-            <Text tag="a" href={item.url}>
-              {item.text}
-            </Text>
-          </li>
-        ))}
-      </MenuWrapper.Central>
-    </MenuWrapper>
-  </>
+  <MenuWrapper>
+    {/* <MenuWrapper.Central>
+        <Logo width="10rem" height="10rem" color={({ theme }) => theme.svgIcons.primary} />
+      </MenuWrapper.Central> */}
+    {/* <MenuWrapper.RightSide> */}
+    {linksList.map((item) => (
+      <li key={item.url}>
+        <Text tag="a" href={item.url}>
+          {item.text}
+        </Text>
+      </li>
+    ))}
+    {/* </MenuWrapper.RightSide> */}
+  </MenuWrapper>
 );
 
 Menu.propTypes = {
