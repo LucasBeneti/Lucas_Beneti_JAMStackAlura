@@ -13,7 +13,7 @@ const MainContainerWrapper = styled.div`
   height: inherit;
   padding: 1rem 10rem 0 10rem;
 
-  background: ${({ theme }) => theme.background.secondary};
+  /* background: ${({ theme }) => theme.background.secondary}; */
 
   ${breakpointsMedia({
     xl: css`
