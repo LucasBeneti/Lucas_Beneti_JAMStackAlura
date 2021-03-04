@@ -5,45 +5,37 @@ import { Text } from '../../foundation/Text';
 import { TextField } from '../../form/TextField';
 import { Button } from '../../commons/Button';
 
-const ContactFormWrapper = styled.div`
+import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
+
+const ContactFormWrapper = styled.form`
   display: flex;
-  /* flex: 1; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 33vh;
-  min-width: 33vw;
-  height: 100%;
-  width: 100%;
-
   background: white;
   border-radius: 0.5rem;
-`;
-
-ContactFormWrapper.Column = styled.div`
-  display: flex;
+  position: absolute;
   flex: 1;
-`;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
 
-ContactFormWrapper.Box = styled.div`
-  box-shadow: -10px 0px 24px rgba(7, 12, 14, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  padding: 85px;
-  background-color: white;
-`;
-
-const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  ${breakpointsMedia({
+    md: css`
+      width: 35vw;
+    `,
+  })}
   padding: 0 3rem 2rem 3rem;
 `;
 
-const ContactFormContent = ({ onSubmit }) => {
+export const ContactForm = ({ modalProps }) => {
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log('form submitado');
+  }
+
   const [contactMessage, setContactMessage] = useState({
     name: '',
     email: '',
@@ -58,12 +50,9 @@ const ContactFormContent = ({ onSubmit }) => {
     });
   }
 
-  useEffect(() => {
-    console.log(contactMessage);
-  }, [contactMessage]);
-
   return (
-    <FormWrapper onSubmit={onSubmit}>
+    <ContactFormWrapper onSubmit={handleSubmit} {...modalProps}>
+      {modalProps.CloseButton}
       <Text tag="h2" variant="titleXS" style={{ alignSelf: 'center' }}>
         Formulário de contato
       </Text>
@@ -98,19 +87,6 @@ const ContactFormContent = ({ onSubmit }) => {
       <Button type="submit" fullWidth>
         Enviar email
       </Button>
-    </FormWrapper>
-  );
-};
-
-export const ContactForm = ({ modalProps }) => {
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log('form submitado');
-  }
-
-  return (
-    <ContactFormWrapper {...modalProps}>
-      <ContactFormContent onSubmit={handleSubmit} />
     </ContactFormWrapper>
   );
 };

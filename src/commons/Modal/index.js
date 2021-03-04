@@ -2,9 +2,12 @@ import React from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 
+import { CloseButton } from '../CloseButton';
+
 const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   align-items: stretch;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -13,6 +16,7 @@ const ModalWrapper = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
+  /* height: 100%; */
   /* overflow: scroll; */
   transition: 0.5s;
   z-index: 100;
@@ -51,11 +55,10 @@ export const Modal = ({ isOpen, onClose, children }) => (
     <motion.div
       variants={{
         open: {
-          x: '33%',
+          x: 0,
         },
         closed: {
-          x: '33%',
-          y: '100%',
+          x: '100%',
         },
       }}
       animate={isOpen ? 'open' : 'closed'}
@@ -72,6 +75,7 @@ export const Modal = ({ isOpen, onClose, children }) => (
       <div>
         {children({
           'data-modal-safe-area': 'true',
+          CloseButton: <CloseButton onClose={onClose} />,
         })}
       </div>
     </motion.div>
