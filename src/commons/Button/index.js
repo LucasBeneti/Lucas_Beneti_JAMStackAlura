@@ -1,20 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import propToStyle from '../../theme/utils/propToStyle';
 
-const ButtonWrapper = styled.button`
-  width: 100%;
-  height: auto;
+export const Button = styled.button`
+  /* width: 100%; */
+  /* height: auto; */
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.background.primary};
   color: ${({ theme }) => theme.text.primary};
   border: none;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.8;
+  }
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
+
+  ${propToStyle('margin')}
+  ${propToStyle('display')}
 `;
-
-export const Button = ({ type, children }) => <ButtonWrapper type={type}>{children}</ButtonWrapper>;
-
-Button.propTypes = {
-  type: PropTypes.string.isRequired,
-  text: PropTypes.node.isRequired,
-};

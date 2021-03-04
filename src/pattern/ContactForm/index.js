@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Text } from '../../foundation/Text';
@@ -43,17 +43,64 @@ const FormWrapper = styled.form`
   padding: 0 3rem 2rem 3rem;
 `;
 
-const ContactFormContent = ({ onSubmit }) => (
-  <FormWrapper onSubmit={onSubmit}>
-    <Text tag="h2" variant="titleXS" style={{ alignSelf: 'center' }}>
-      Formulário de contato
-    </Text>
-    <TextField type="text" name="name" placeholder="Nome para contado" onChange={() => {}} autcomplete="off" />
-    <TextField type="email" name="email" placeholder="Seu melhor email" onChange={() => {}} />
-    <TextField type="text" name="emailmessage" placeholder="Sua mensagem" onChange={() => {}} autcomplete="off" />
-    <Button type="submit">Enviar email</Button>
-  </FormWrapper>
-);
+const ContactFormContent = ({ onSubmit }) => {
+  const [contactMessage, setContactMessage] = useState({
+    name: '',
+    email: '',
+    emailMessage: '',
+  });
+
+  function handleChange(event) {
+    const fieldName = event.target.getAttribute('name');
+    setContactMessage({
+      ...contactMessage,
+      [fieldName]: event.target.value,
+    });
+  }
+
+  useEffect(() => {
+    console.log(contactMessage);
+  }, [contactMessage]);
+
+  return (
+    <FormWrapper onSubmit={onSubmit}>
+      <Text tag="h2" variant="titleXS" style={{ alignSelf: 'center' }}>
+        Formulário de contato
+      </Text>
+      <TextField
+        type="text"
+        name="name"
+        placeholder="Nome para contado"
+        value={contactMessage.name}
+        onChange={handleChange}
+        autcomplete="off"
+        color="black"
+      />
+      <TextField
+        type="email"
+        name="email"
+        placeholder="Seu melhor email"
+        value={contactMessage.email}
+        onChange={handleChange}
+        color="black"
+      />
+      <TextField
+        type="text"
+        tag="textarea"
+        name="emailMessage"
+        placeholder="Sua mensagem"
+        value={contactMessage.emailMessage}
+        onChange={handleChange}
+        autcomplete="off"
+        color="black"
+        height="10rem"
+      />
+      <Button type="submit" fullWidth>
+        Enviar email
+      </Button>
+    </FormWrapper>
+  );
+};
 
 export const ContactForm = ({ modalProps }) => {
   function handleSubmit(event) {
