@@ -1,15 +1,28 @@
-import React from 'react';
-// import styled from 'styled-components';
-import { Cabecalho } from '../src/commons/Cabecalho';
-import { Capa } from '../src/commons/Capa';
+import React, { useState } from 'react';
 import { Footer } from '../src/commons/Footer';
 import { MainContainer } from '../src/commons/MainContainer';
-// const Title = styled.h1`
-//   font-size: 50px;
-//   color: ${({ theme }) => theme.colors.primary};
-// `;
+import { Modal } from '../src/commons/Modal';
+
+import { CabecalhoWrapper } from '../src/commons/Cabecalho/styles/CabecalhoWrapper';
+import { Logo } from '../src/theme/Icons/Logo';
+import { Menu } from '../src/commons/Menu';
+import { ContactForm } from '../src/commons/pattern/ContactForm';
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const linksList = [
+    {
+      text: 'Sobre mim',
+      url: '/about',
+    },
+    {
+      text: 'Contato',
+      url: '',
+      onClick: setModalOpen,
+    },
+  ];
+
   return (
     <div
       style={{
@@ -17,14 +30,22 @@ export default function Home() {
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'column',
-        // justifyContent: 'space-between',
-        backgroundImage: 'url(/images/bubbles.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
         minHeight: '100vh',
       }}
     >
-      <Cabecalho />
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      >
+        {(modalProps) => <ContactForm modalProps={modalProps} />}
+      </Modal>
+
+      <CabecalhoWrapper>
+        <Logo width="5em" height="5em" color={({ theme }) => theme.svgIcons.primary} />
+        <Menu linksList={linksList} />
+      </CabecalhoWrapper>
       <MainContainer />
       <Footer />
     </div>
