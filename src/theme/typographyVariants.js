@@ -21,7 +21,7 @@ export const typographyVariants = {
   },
   basicText: {
     fontSize: '1em',
-    fontWeight: '700',
+    fontWeight: '400',
     lineHeight: 1.25,
   },
   subtext: {

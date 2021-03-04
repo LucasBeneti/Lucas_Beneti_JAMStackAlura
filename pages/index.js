@@ -6,7 +6,7 @@ import { Modal } from '../src/commons/Modal';
 import { CabecalhoWrapper } from '../src/commons/Cabecalho/styles/CabecalhoWrapper';
 import { Logo } from '../src/theme/Icons/Logo';
 import { Menu } from '../src/commons/Menu';
-import { ContactForm } from '../src/commons/pattern/ContactForm';
+import { ContactForm } from '../src/pattern/ContactForm';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
