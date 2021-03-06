@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -26,6 +26,7 @@ const ModalWrapper = styled.div`
       return css`
         opacity: 1;
         pointer-events: all;
+        overflow: hidden;
       `;
     }
     return css`
@@ -41,43 +42,49 @@ const LockScroll = createGlobalStyle`
   }
 `;
 
-export const Modal = ({ isOpen, onClose, children }) => (
-  <ModalWrapper
-    isOpen={isOpen}
-    onClick={(event) => {
-      const isSafeArea = event.target.closest('[data-modal-safe-area=true]');
-      if (!isSafeArea) {
-        onClose();
-      }
-    }}
-  >
-    {isOpen && <LockScroll />}
-    <motion.div
-      variants={{
-        open: {
-          x: 0,
-        },
-        closed: {
-          x: '100%',
-        },
-      }}
-      animate={isOpen ? 'open' : 'closed'}
-      transition={{
-        type: 'spring',
-        duration: 0.5,
-      }}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        flex: 1,
+export const Modal = ({ isOpen, onClose, children }) => {
+  useEffect(() => {
+    console.log('isOpen', isOpen);
+  }, [isOpen]);
+
+  return (
+    <ModalWrapper
+      isOpen={isOpen}
+      onClick={(event) => {
+        const isSafeArea = event.target.closest('[data-modal-safe-area=true]');
+        if (!isSafeArea) {
+          onClose();
+        }
       }}
     >
-      <div>
-        {children({
-          'data-modal-safe-area': 'true',
-          CloseButton: <CloseButton onClose={onClose} />,
-        })}
-      </div>
-    </motion.div>
-  </ModalWrapper>
-);
+      {isOpen && <LockScroll />}
+      <motion.div
+        variants={{
+          open: {
+            x: 0,
+          },
+          closed: {
+            x: '100%',
+          },
+        }}
+        animate={isOpen ? 'open' : 'closed'}
+        transition={{
+          type: 'spring',
+          duration: 0.5,
+        }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flex: 1,
+        }}
+      >
+        <div>
+          {children({
+            'data-modal-safe-area': 'true',
+            CloseButton: <CloseButton onClose={onClose} />,
+          })}
+        </div>
+      </motion.div>
+    </ModalWrapper>
+  );
+};

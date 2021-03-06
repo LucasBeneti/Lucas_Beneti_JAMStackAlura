@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Card } from '../Card';
-import { Text } from '../../foundation/Text';
 import { DescriptionCard } from '../DescriptionCard';
 
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';

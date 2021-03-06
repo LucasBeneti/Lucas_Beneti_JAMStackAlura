@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components';
 import propToStyle from '../../theme/utils/propToStyle';
 
 export const Button = styled.button`
-  /* width: 100%; */
-  /* height: auto; */
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.background.primary};
@@ -13,6 +11,12 @@ export const Button = styled.button`
   &:hover {
     opacity: 0.8;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 20%;
+  }
+
   ${({ fullWidth }) =>
     fullWidth &&
     css`
