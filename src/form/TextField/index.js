@@ -29,7 +29,7 @@ const Input = styled(Text)`
     `}
 `;
 Input.defaultProps = {
-  tag: 'input',
+  // tag: 'input',
   // variant: 'simpleText',
 };
 export const TextField = ({ type, tag, placeholder, name, onChange, value, ...props }) => (
@@ -38,9 +38,9 @@ export const TextField = ({ type, tag, placeholder, name, onChange, value, ...pr
   </InputWrapper>
 );
 
-// TextField.defaultProps = {
-//   value: '',
-// };
+TextField.defaultProps = {
+  tag: 'input',
+};
 
 TextField.propTypes = {
   type: PropTypes.string.isRequired,

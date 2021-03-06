@@ -16,7 +16,6 @@ export const Button = styled.button`
     cursor: not-allowed;
     opacity: 20%;
   }
-
   ${({ fullWidth }) =>
     fullWidth &&
     css`
