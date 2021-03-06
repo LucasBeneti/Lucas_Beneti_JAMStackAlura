@@ -35,6 +35,9 @@ const ContactFormWrapper = styled.form`
   width: 100vw;
   ${breakpointsMedia({
     md: css`
+      width: 50vw;
+    `,
+    xl: css`
       width: 35vw;
     `,
   })}
@@ -67,6 +70,7 @@ export const ContactForm = ({ modalProps }) => {
       if (checkBlankSpaces(contactMessage)) {
         console.log('setado DONE');
         setSubmissionState(formStates.DONE);
+        console.log('contactMessage', contactMessage);
       } else {
         console.log('setado error');
         setSubmissionState(formStates.ERROR);
@@ -91,7 +95,7 @@ export const ContactForm = ({ modalProps }) => {
       <TextField
         type="text"
         name="name"
-        placeholder="Nome para contado"
+        placeholder="Seu nome para contato"
         value={contactMessage.name}
         onChange={handleChange}
         autcomplete="off"

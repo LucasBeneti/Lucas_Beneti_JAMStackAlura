@@ -37,7 +37,7 @@ const ModalWrapper = styled.div`
 `;
 
 const LockScroll = createGlobalStyle`
-  body {
+  html, body {
     overflow: hidden;
   }
 `;
