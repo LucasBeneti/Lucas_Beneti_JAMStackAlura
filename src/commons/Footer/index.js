@@ -18,10 +18,10 @@ const FooterWrapper = styled.footer`
     color: ${({ theme }) => theme.text.primary};
     text-decoration: none;
     transition: 0.3s;
-    &:hover,
+    /* &:hover,
     &:focus {
       opacity: 0.7;
-    }
+    } */
   }
 `;
 
