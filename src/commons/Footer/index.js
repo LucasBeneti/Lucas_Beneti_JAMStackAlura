@@ -38,7 +38,6 @@ FooterWrapper.Icons = styled.span`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  /* padding-right: 0.5rem; */
   justify-content: space-between;
   align-items: center;
 `;

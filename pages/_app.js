@@ -1,14 +1,14 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Head from 'next/head';
-import useDarkMode from 'use-dark-mode';
+// import useDarkMode from 'use-dark-mode';
 
 import { GlobalStyle } from '../src/theme/GlobalStyle';
-import { lightTheme, darkTheme } from '../src/theme';
+import { lightTheme } from '../src/theme';
 
 export default function App({ Component, pageProps }) {
-  const { value } = useDarkMode(false, { storageKey: null, onChange: null });
-  const theme = value ? darkTheme : lightTheme;
+  // const { value } = useDarkMode(false, { storageKey: null, onChange: null });
+  // const theme = value ? darkTheme : lightTheme;
 
   return (
     <>

@@ -8,14 +8,8 @@ export const MenuWrapper = styled.nav`
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   margin-top: 1rem;
-  /* grid-template-columns: 3fr 2fr; */
   align-items: center;
   justify-items: space-between;
-  /* flex-wrap: wrap; */
-  /* padding-left: 28px;
-    padding-right: 28px; */
-  /* width: 100%; */
-  /* height: auto; */
 
   list-style: none;
 
