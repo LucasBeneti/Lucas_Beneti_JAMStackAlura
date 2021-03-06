@@ -58,21 +58,16 @@ export const ContactForm = ({ modalProps }) => {
     const res = Object.values(objectToCheck)
       .map((value) => value.trim().length > 0)
       .filter((value) => value === false);
-    console.log('res', res);
     return res.length === 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     setFormSubmitted(true);
-    console.log('form submitado');
     if (contactMessage.email !== '' && contactMessage.name !== '' && contactMessage.emailMessage !== '') {
       if (checkBlankSpaces(contactMessage)) {
-        console.log('setado DONE');
         setSubmissionState(formStates.DONE);
-        console.log('contactMessage', contactMessage);
       } else {
-        console.log('setado error');
         setSubmissionState(formStates.ERROR);
       }
     }
