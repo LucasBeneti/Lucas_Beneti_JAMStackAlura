@@ -13,12 +13,12 @@ export const MenuWrapper = styled.nav`
 
   list-style: none;
 
-  a {
+  li {
     text-align: center;
     display: block;
     text-decoration: none;
     color: ${({ theme }) => theme.text.primary};
-    transition: opacity 200ms ease-in-out;
+    /* transition: border-bottom 200ms ease-in-out; */
     ${breakpointsMedia({
       xs: css`
         ${TextVariantMap.smallestException}
@@ -27,9 +27,22 @@ export const MenuWrapper = styled.nav`
         ${TextVariantMap.paragraph1}
       `,
     })}
+    &:after {
+      display: block;
+      content: '';
+      border-bottom: solid 3px white;
+      transform: scaleX(0);
+      transition: transform 250ms ease-in-out;
+    }
     &:hover,
     &:focus {
-      opacity: 0.6;
+      cursor: pointer;
+      margin-top: -1px;
+    }
+
+    &:hover:after,
+    &:focus:after {
+      transform: scaleX(1);
     }
   }
 `;
