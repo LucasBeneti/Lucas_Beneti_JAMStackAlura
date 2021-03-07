@@ -64,9 +64,35 @@ export const ContactForm = ({ modalProps }) => {
   function handleSubmit(event) {
     event.preventDefault();
     setFormSubmitted(true);
+    setSubmissionState(formStates.LOADING);
     if (contactMessage.email !== '' && contactMessage.name !== '' && contactMessage.emailMessage !== '') {
       if (checkBlankSpaces(contactMessage)) {
-        setSubmissionState(formStates.DONE);
+        const contactDTO = {
+          name: contactMessage.name,
+          email: contactMessage.email,
+          message: contactMessage.emailMessage,
+        };
+        fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(contactDTO),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Deu ruim no envio dos dados!');
+          })
+          .then((data) => {
+            console.log('data', data);
+            setSubmissionState(formStates.DONE);
+          })
+          .catch((error) => {
+            console.log('error', error);
+            setSubmissionState(formStates.ERROR);
+          });
       } else {
         setSubmissionState(formStates.ERROR);
       }
