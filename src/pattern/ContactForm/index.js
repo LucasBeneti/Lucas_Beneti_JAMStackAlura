@@ -72,14 +72,12 @@ export const ContactForm = ({ modalProps }) => {
           email: contactMessage.email,
           message: contactMessage.emailMessage,
         };
-        fetch('https://contact-form-api-jamstack.herokuapp.com/message ', {
+        fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: {
-            body: JSON.stringify(contactDTO),
-          },
+          body: JSON.stringify(contactDTO),
         })
           .then((response) => {
             if (response.ok) {
@@ -88,13 +86,13 @@ export const ContactForm = ({ modalProps }) => {
             throw new Error('Deu ruim no envio dos dados!');
           })
           .then((data) => {
+            console.log('data', data);
             setSubmissionState(formStates.DONE);
           })
           .catch((error) => {
+            console.log('error', error);
             setSubmissionState(formStates.ERROR);
           });
-
-        setSubmissionState(formStates.DONE);
       } else {
         setSubmissionState(formStates.ERROR);
       }
