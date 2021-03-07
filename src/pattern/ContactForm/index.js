@@ -6,6 +6,7 @@ import { Text } from '../../foundation/Text';
 import { TextField } from '../../form/TextField';
 import { Button } from '../../commons/Button';
 
+import loadingAnim from './animations/loading.json';
 import emailSuccess from './animations/email-sent.json';
 import emailError from './animations/error-email.json';
 
@@ -144,6 +145,20 @@ export const ContactForm = ({ modalProps }) => {
       <Button type="submit" disabled={isFormValid} fullWidth>
         Enviar email
       </Button>
+      {formSubmitted && submissionState === formStates.LOADING && (
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '-8rem', paddingTop: '8rem' }}>
+          <Lottie
+            width="8rem"
+            height="8rem"
+            className="lottie-container basic"
+            config={{
+              animationData: loadingAnim,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </div>
+      )}
       {formSubmitted && submissionState === formStates.DONE && (
         <div style={{ display: 'flex', justifyContent: 'center', margin: '-8rem', paddingTop: '8rem' }}>
           <Lottie
