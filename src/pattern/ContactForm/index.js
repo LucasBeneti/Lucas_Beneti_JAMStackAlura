@@ -18,8 +18,6 @@ const formStates = {
   ERROR: 'ERROR',
 };
 
-const MESSAGE_ENDPOINT = 'https://contact-form-api-jamstack.herokuapp.com/message';
-
 const ContactFormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -84,20 +82,16 @@ export const ContactForm = ({ modalProps }) => {
           },
         })
           .then((response) => {
-            console.log(response);
             if (response.ok) {
-              console.log('tudo enviado');
               return response.json();
             }
             throw new Error('Deu ruim no envio dos dados!');
           })
           .then((data) => {
-            console.log('data', data);
             setSubmissionState(formStates.DONE);
           })
           .catch((error) => {
             setSubmissionState(formStates.ERROR);
-            console.log(error);
           });
 
         setSubmissionState(formStates.DONE);
