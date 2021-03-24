@@ -118,14 +118,14 @@ export const MainContainer = () => (
           />
         </MainContainerWrapper.Column>
       </MainContainerWrapper.Row1>
-      <MainContainerWrapper.Row2>
+      {/* <MainContainerWrapper.Row2>
         <DescriptionCard
           imgPath="images/lucasAvatar.jpeg"
           imgSize={{ width: '15rem', height: '15rem' }}
           title="Lucas Beneti"
           text="Engineering student passionate about programming, problem solving, Artificial Intelligence and SciFi."
         />
-      </MainContainerWrapper.Row2>
+      </MainContainerWrapper.Row2> */}
     </MainContainerWrapper.Grid>
   </MainContainerWrapper>
 );
