@@ -31,16 +31,20 @@ CabecalhoWrapper.Menu = styled.span`
 `;
 
 export const Cabecalho = () => {
-  const linksList = [
-    {
-      text: 'Sobre mim',
-      url: '/about',
-    },
-    {
-      text: 'Contato',
-      url: '/contact',
-    },
-  ];
+  // const linksList = [
+  //   {
+  //     text: 'Página inicial',
+  //     url: '/',
+  //   },
+  //   {
+  //     text: 'Sobre mim',
+  //     url: '/about',
+  //   },
+  //   {
+  //     text: 'Contato',
+  //     url: '/contact',
+  //   },
+  // ];
 
   return (
     <>

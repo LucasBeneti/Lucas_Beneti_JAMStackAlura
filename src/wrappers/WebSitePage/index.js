@@ -6,15 +6,20 @@ import { Modal } from '../../commons/Modal';
 import { ContactForm } from '../../pattern/ContactForm';
 import { CabecalhoWrapper } from '../../commons/Cabecalho/styles/CabecalhoWrapper';
 import { Logo } from '../../theme/Icons/Logo';
+import SEO from '../../commons/SEO';
 
 export const WebSitepageContext = createContext({
   toggleContactForm: () => {},
 });
 
-const WebsitePageWrapper = ({ children }) => {
+const WebsitePageWrapper = ({ children, seoProps }) => {
   const [isModalOpen, setModalState] = useState(false);
 
   const linksList = [
+    {
+      text: 'Página inicial',
+      url: '/',
+    },
     {
       text: 'Sobre mim',
       url: '/about',
@@ -35,6 +40,7 @@ const WebsitePageWrapper = ({ children }) => {
         },
       }}
     >
+      <SEO {...seoProps} />
       <div
         style={{
           flex: '1',
@@ -65,6 +71,13 @@ const WebsitePageWrapper = ({ children }) => {
 
 export default WebsitePageWrapper;
 
+WebsitePageWrapper.defaultProps = {
+  seoProps: {},
+};
+
 WebsitePageWrapper.propTypes = {
+  seoProps: PropTypes.shape({
+    headTitle: PropTypes.string,
+  }),
   children: PropTypes.node.isRequired,
 };

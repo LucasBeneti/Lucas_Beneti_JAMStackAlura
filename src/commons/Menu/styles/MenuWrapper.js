@@ -5,7 +5,7 @@ import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 export const MenuWrapper = styled.nav`
   font-family: 'Montserrat', sans-serif;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 5rem;
   margin-top: 1rem;
   align-items: center;
