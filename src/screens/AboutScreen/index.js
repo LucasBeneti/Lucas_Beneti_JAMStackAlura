@@ -36,7 +36,7 @@ AboutScreenWrapper.Avatar = styled.span`
     justify-self: center;
     align-self: center;
     border-radius: 100%;
-    object-fit: scale-down;
+    /* object-fit: scale-down; */
     height: auto;
     width: 100%;
   }
