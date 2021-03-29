@@ -6,6 +6,7 @@ import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
 const AboutScreenWrapper = styled.div`
   display: flex;
+  gap: 1.5rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -28,7 +29,6 @@ AboutScreenWrapper.MainContainer = styled.div`
 AboutScreenWrapper.Avatar = styled.span`
   justify-self: center;
   align-self: center;
-  /* background: red; */
   width: auto;
   height: 100%;
   padding: 1rem;
@@ -36,7 +36,6 @@ AboutScreenWrapper.Avatar = styled.span`
     justify-self: center;
     align-self: center;
     border-radius: 100%;
-    /* object-fit: scale-down; */
     height: auto;
     width: 100%;
   }
@@ -48,20 +47,14 @@ AboutScreenWrapper.Content = styled.article`
   width: 100%;
   height: 100%;
   gap: 1rem;
-  /* justify-content: flex-start;
-  align-items: flex-start; */
-  /* padding-top: 1rem;
-  padding-left: 3rem; */
-  /* padding: 5rem; */
   padding: 2rem 2rem 2rem 0;
 `;
 
 AboutScreenWrapper.Text = styled.article`
   justify-content: center;
-  /* padding: 1rem 5rem 0 1rem; */
 `;
 
-const AboutScreen = () => {
+const AboutScreen = ({ reposData }) => {
   return (
     <AboutScreenWrapper>
       <AboutScreenWrapper.MainContainer>
@@ -97,11 +90,28 @@ const AboutScreen = () => {
           </Text>
         </AboutScreenWrapper.Content>
       </AboutScreenWrapper.MainContainer>
+      <AboutScreenWrapper.MainContainer>
+        <AboutScreenWrapper.Content>
+          {reposData.map((repo) => (
+            <Text href={repo.url}>{repo.name}</Text>
+          ))}
+        </AboutScreenWrapper.Content>
+      </AboutScreenWrapper.MainContainer>
     </AboutScreenWrapper>
   );
 };
 
 export default AboutScreen;
+
+AboutScreen.propTypes = {
+  reposData: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ).isRequired,
+};
 
 // https://api.github.com/users/lucasbeneti/repos
 // aqui terá o getStaticProps do projeto pra pegar os repos e listar eles...
