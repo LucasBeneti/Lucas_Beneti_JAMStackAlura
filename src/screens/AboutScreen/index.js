@@ -93,7 +93,7 @@ const AboutScreen = ({ reposData }) => {
       <AboutScreenWrapper.MainContainer>
         <AboutScreenWrapper.Content>
           {reposData.map((repo) => (
-            <Text href={repo.url}>{repo.name}</Text>
+            <Text href={`/about/${repo.slug}`}>{repo.name}</Text>
           ))}
         </AboutScreenWrapper.Content>
       </AboutScreenWrapper.MainContainer>
@@ -107,8 +107,7 @@ AboutScreen.propTypes = {
   reposData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      url: PropTypes.string,
-      description: PropTypes.string,
+      slug: PropTypes.string,
     }),
   ).isRequired,
 };

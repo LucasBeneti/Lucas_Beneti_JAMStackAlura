@@ -48,6 +48,7 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
           flexWrap: 'wrap',
           flexDirection: 'column',
           minHeight: '100vh',
+          minWidth: '100vw',
         }}
       >
         <Modal

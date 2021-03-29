@@ -1,10 +1,49 @@
 import React from 'react';
 import ProjectScreen from '../../src/screens/ProjectScreen';
+import websitePageHOC from '../../src/wrappers/WebSitePage/hoc';
 
-function ProjectPate({ name, url, description }) {
-  return <ProjectScreen name={name} url={url} description={description} />;
+function ProjectPage({ name, url, description, reposData }) {
+  return <ProjectScreen name={name} url={url} description={description} reposData={reposData} />;
 }
 
-ProjectPate.propTypes = ProjectScreen.propTypes;
-// ainda tem o que fazer nessa file, tem que ver no instalura o que tá sendo feito com esses campos
-// se ainda precisa fazer alguma coisa como é feito no [slugs].js
+ProjectPage.propTypes = ProjectScreen.propTypes;
+
+export default websitePageHOC(ProjectPage);
+
+export async function getStaticProps({ params }) {
+  const reposList = await fetch('https://api.github.com/users/lucasbeneti/repos').then((response) => response.json());
+  const reposData = await reposList.reduce((valorAcumulado, repo) => {
+    const foundRepo = params.slug === repo.name.toLowerCase() ? true : false;
+
+    if (foundRepo) {
+      return {
+        ...valorAcumulado,
+        name: repo.name,
+        url: repo.html_url,
+        description: repo.description,
+      };
+    }
+    return valorAcumulado;
+  }, {});
+  return {
+    props: {
+      name: reposData.name,
+      url: reposData.url,
+      description: reposData.description,
+      reposData: reposList,
+      pageWrapperProps: {
+        seoProps: {
+          headTitle: reposData.name,
+        },
+      },
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const reposList = await fetch('https://api.github.com/users/lucasbeneti/repos').then((response) => response.json());
+  const paths = await reposList.map((repo) => {
+    return { params: { slug: repo.name.toLowerCase() } };
+  });
+  return { paths, fallback: false };
+}
