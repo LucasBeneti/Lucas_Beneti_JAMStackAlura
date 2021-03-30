@@ -4,7 +4,7 @@ import { Footer } from '../../commons/Footer';
 import { Menu } from '../../commons/Menu';
 import { Modal } from '../../commons/Modal';
 import { ContactForm } from '../../pattern/ContactForm';
-import { CabecalhoWrapper } from '../../commons/Cabecalho/styles/CabecalhoWrapper';
+import { CabecalhoWrapper } from '../../commons/CabecalhoWrapper';
 import { Logo } from '../../theme/Icons/Logo';
 import SEO from '../../commons/SEO';
 

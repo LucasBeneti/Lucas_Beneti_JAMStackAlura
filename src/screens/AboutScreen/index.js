@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from '../../foundation/Text';
-import styled, { css } from 'styled-components';
 import Image from 'next/image';
+import styled, { css } from 'styled-components';
+import { Text } from '../../foundation/Text';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
 const AboutScreenWrapper = styled.div`

@@ -17,12 +17,10 @@ AboutPage.propTypes = AboutScreen.propTypes;
 
 export async function getStaticProps() {
   const reposList = await fetch('https://api.github.com/users/lucasbeneti/repos').then((response) => response.json());
-  const reposData = await reposList.map((value) => {
-    return {
-      name: value.name,
-      slug: value.name.toLowerCase(),
-    };
-  });
+  const reposData = await reposList.map((value) => ({
+    name: value.name,
+    slug: value.name.toLowerCase(),
+  }));
   return {
     props: { reposData },
   };

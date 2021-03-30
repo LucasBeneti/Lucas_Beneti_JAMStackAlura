@@ -13,7 +13,7 @@ export default websitePageHOC(ProjectPage);
 export async function getStaticProps({ params }) {
   const reposList = await fetch('https://api.github.com/users/lucasbeneti/repos').then((response) => response.json());
   const reposData = await reposList.reduce((valorAcumulado, repo) => {
-    const foundRepo = params.slug === repo.name.toLowerCase() ? true : false;
+    const foundRepo = params.slug === repo.name.toLowerCase();
 
     if (foundRepo) {
       return {
@@ -42,8 +42,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const reposList = await fetch('https://api.github.com/users/lucasbeneti/repos').then((response) => response.json());
-  const paths = await reposList.map((repo) => {
-    return { params: { slug: repo.name.toLowerCase() } };
-  });
+  const paths = await reposList.map((repo) => ({ params: { slug: repo.name.toLowerCase() } }));
   return { paths, fallback: false };
 }

@@ -113,7 +113,7 @@ const ProjectScreen = ({ name, url, description, reposData }) => {
             {name}
           </Text>
           <Text variant="subtext" style={{ fontSize: '1rem' }}>
-            {description ? description : defaultDescription}
+            {description || defaultDescription}
           </Text>
           <a href={url} target="_blank" rel="noreferrer">
             Acessar repositório
