@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from '../../foundation/Text';
 import styled, { css } from 'styled-components';
+import Image from 'next/image';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
 const AboutScreenWrapper = styled.div`
@@ -29,12 +30,13 @@ AboutScreenWrapper.MainContainer = styled.div`
 AboutScreenWrapper.Avatar = styled.span`
   justify-self: center;
   align-self: center;
-  width: auto;
+  min-width: 20%;
   height: 100%;
   padding: 1rem;
   img {
-    justify-self: center;
-    align-self: center;
+    /* justify-self: center;
+    align-self: center; */
+
     border-radius: 100%;
     height: auto;
     width: 100%;
@@ -45,6 +47,7 @@ AboutScreenWrapper.Content = styled.article`
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* max-width: 40vw; */
   height: 100%;
   gap: 1rem;
   padding: 2rem 2rem 2rem 0;
@@ -54,12 +57,61 @@ AboutScreenWrapper.Text = styled.article`
   justify-content: center;
 `;
 
+AboutScreenWrapper.RandomRepos = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+`;
+
 const AboutScreen = ({ reposData }) => {
+  function getRandomRepos() {
+    return (
+      <AboutScreenWrapper.RandomRepos>
+        <Text
+          key={reposData[10].html_url}
+          href={`/about/${reposData[10].name.toLowerCase()}`}
+          style={{ color: '#073615' }}
+        >
+          {reposData[10].name}
+        </Text>
+        <Text
+          key={reposData[11].html_url}
+          href={`/about/${reposData[11].name.toLowerCase()}`}
+          style={{ color: '#073615' }}
+        >
+          {reposData[11].name}
+        </Text>
+        <Text
+          key={reposData[12].html_url}
+          href={`/about/${reposData[12].name.toLowerCase()}`}
+          style={{ color: '#073615' }}
+        >
+          {reposData[12].name}
+        </Text>
+        <Text
+          key={reposData[13].html_url}
+          href={`/about/${reposData[13].name.toLowerCase()}`}
+          style={{ color: '#073615' }}
+        >
+          {reposData[13].name}
+        </Text>
+        <Text
+          key={reposData[14].html_url}
+          href={`/about/${reposData[14].name.toLowerCase()}`}
+          style={{ color: '#073615' }}
+        >
+          {reposData[14].name}
+        </Text>
+      </AboutScreenWrapper.RandomRepos>
+    );
+  }
   return (
     <AboutScreenWrapper>
       <AboutScreenWrapper.MainContainer>
         <AboutScreenWrapper.Avatar>
-          <img src="images/lucasAvatar.jpeg" alt="uma imagem minha" />
+          <Image src="/images/lucasAvatar.jpeg" alt="uma imagem minha" width="100%" height="100%" layout="responsive" />
         </AboutScreenWrapper.Avatar>
         <AboutScreenWrapper.Content>
           <Text tag="article" variant="subtext">
@@ -91,11 +143,7 @@ const AboutScreen = ({ reposData }) => {
         </AboutScreenWrapper.Content>
       </AboutScreenWrapper.MainContainer>
       <AboutScreenWrapper.MainContainer>
-        <AboutScreenWrapper.Content>
-          {reposData.map((repo) => (
-            <Text href={`/about/${repo.slug}`}>{repo.name}</Text>
-          ))}
-        </AboutScreenWrapper.Content>
+        <AboutScreenWrapper.Content>{getRandomRepos()}</AboutScreenWrapper.Content>
       </AboutScreenWrapper.MainContainer>
     </AboutScreenWrapper>
   );
