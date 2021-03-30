@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import propToStyle from '../../theme/utils/propToStyle';
+import Link from '../../commons/Link';
 
 export const TextVariantMap = {
   simpleText: css`
@@ -60,18 +61,31 @@ const TextBase = styled.span`
   ${propToStyle('textAlign')}
 `;
 
-export const Text = ({ tag, variant, children, ...props }) => (
-  <TextBase as={tag} variant={variant} {...props}>
-    {children}
-  </TextBase>
-);
+export const Text = ({ tag, variant, children, href, ...props }) => {
+  if (href) {
+    return (
+      <TextBase as={Link} variant={variant} href={href} {...props}>
+        {children}
+      </TextBase>
+    );
+  }
+  return (
+    <TextBase as={tag} variant={variant} {...props}>
+      {children}
+    </TextBase>
+  );
+};
 
 Text.propTypes = {
   tag: PropTypes.string,
   variant: PropTypes.string,
+  children: PropTypes.node,
+  href: PropTypes.string,
 };
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'simpleText',
+  children: null,
+  href: '',
 };

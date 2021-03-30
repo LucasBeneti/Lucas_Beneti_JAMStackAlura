@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Lottie } from '@crello/react-lottie';
@@ -87,11 +88,9 @@ export const ContactForm = ({ modalProps }) => {
             throw new Error('Deu ruim no envio dos dados!');
           })
           .then((data) => {
-            console.log('data', data);
             setSubmissionState(formStates.DONE);
           })
           .catch((error) => {
-            console.log('error', error);
             setSubmissionState(formStates.ERROR);
           });
       } else {

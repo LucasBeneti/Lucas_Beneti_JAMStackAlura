@@ -15,7 +15,9 @@ export const Menu = ({ linksList }) => (
           }
         }}
       >
-        <Text tag="span">{item.text}</Text>
+        <Text tag="span" href={item.url}>
+          {item.text}
+        </Text>
       </li>
     ))}
   </MenuWrapper>

@@ -1,11 +1,7 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
-
-import { Menu } from '../Menu';
-import { Logo } from '../../theme/Icons/Logo';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 
-const CabecalhoWrapper = styled.span`
+export const CabecalhoWrapper = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,25 +25,3 @@ CabecalhoWrapper.Menu = styled.span`
   justify-content: space-between;
   align-items: center;
 `;
-
-export const Cabecalho = () => {
-  const linksList = [
-    {
-      text: 'Sobre mim',
-      url: '/about',
-    },
-    {
-      text: 'Contato',
-      url: '/contact',
-    },
-  ];
-
-  return (
-    <>
-      <CabecalhoWrapper>
-        <Logo width="5em" height="5em" color={({ theme }) => theme.svgIcons.primary} />
-        <Menu linksList={linksList} />
-      </CabecalhoWrapper>
-    </>
-  );
-};

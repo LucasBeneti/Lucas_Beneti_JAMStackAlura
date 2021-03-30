@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 import styled, { css } from 'styled-components';
 
 import { Text } from '../../foundation/Text';
@@ -38,7 +39,7 @@ CardWrapper.Image = styled.div`
   img {
     object-fit: fit;
     width: 100%;
-    height: 100%;
+    height: 10rem;
 
     /* solucao temporaria */
     border-top-right-radius: 0.5rem;
@@ -57,7 +58,14 @@ export const Card = ({ title, subtitle, imgSource, highlight }) => (
       </Text>
     </CardWrapper.Text>
     <CardWrapper.Image>
-      <img src={imgSource} alt="imagem de placeholder" />
+      <Image
+        src={imgSource}
+        alt="imagem de placeholder"
+        unoptimized="true"
+        width="100%"
+        height="100%"
+        className="cardImage"
+      />
     </CardWrapper.Image>
   </CardWrapper>
 );
