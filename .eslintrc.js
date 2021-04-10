@@ -23,7 +23,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'object-curly-newline': 'off',
     'react/prop-types': 'off',
-    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-body-style': 'off',
     'react/forbid-prop-types': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',

@@ -12,7 +12,7 @@ describe('breakpointsMedia()', () => {
         const breakpointsMediaRes = breakpointsMedia(cssBreakpoints);
         expect(breakpointsMediaRes).toMatchInlineSnapshot(`
           Array [
-            undefined,
+            "",
           ]
         `);
       });
@@ -29,7 +29,7 @@ describe('breakpointsMedia()', () => {
         const breakpointsMediaRes = breakpointsMedia(cssBreakpoints);
         expect(breakpointsMediaRes).toMatchInlineSnapshot(`
           Array [
-            undefined,
+            "",
           ]
         `);
       });
@@ -42,7 +42,7 @@ describe('breakpointsMedia()', () => {
         },
       };
       const breakpointsMediaRes = breakpointsMedia(cssBreakpoints);
-      expect(breakpointsMediaRes).toEqual([undefined]);
+      expect(breakpointsMediaRes).toEqual(['']);
     });
   });
 });

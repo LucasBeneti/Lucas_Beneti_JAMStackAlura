@@ -12,10 +12,10 @@ function formatErrors(yupErrors = []) {
 }
 
 export function useForm({ initialValues, onSubmit, validateSchema }) {
-  const [values, setValues] = useState(initialValues);
+  const [formValues, setValues] = useState(initialValues);
   const [isFormDisabled, setIsFormDisabled] = useState(true);
   const [errors, setErrors] = useState({});
-  const [touched, setTouchedFields] = useState([]);
+  //   const [touched, setTouchedFields] = useState([]);
 
   async function validateValues(currentValues) {
     try {
@@ -29,16 +29,15 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
     }
   }
   useEffect(() => {
-    validateValues(values);
-  }, [values]);
-  //   console.log(`values`, values);
+    validateValues(formValues);
+  }, [formValues]);
+  //   console.log(`formValues`, formValues);
 
   return {
-    values,
+    formValues,
     handleSubmit(event) {
       event.preventDefault();
-      console.log(values);
-      onSubmit(values);
+      onSubmit(formValues);
     },
     handleChange(event) {
       const fieldName = event.target.getAttribute('name');
@@ -49,11 +48,10 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
       }));
     },
     watch(fieldName) {
-      return values[fieldName];
+      return formValues[fieldName];
     },
     isFormDisabled,
     setIsFormDisabled,
     errors,
-    touched,
   };
 }

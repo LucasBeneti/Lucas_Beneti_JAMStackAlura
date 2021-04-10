@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Lottie } from '@crello/react-lottie';
+import * as yup from 'yup';
 
 import { Text } from '../../foundation/Text';
 import { TextField } from '../../form/TextField';
 import { Button } from '../../commons/Button';
 
-import * as yup from 'yup';
 import { useForm } from '../../infra/hooks/useForm';
 import { contactService } from '../../services/contact/contactService';
 
@@ -65,7 +65,7 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
     emailMessage: '',
   };
 
-  const { watch, values, isFormDisabled, handleSubmit, handleChange, setIsFormDisabled } = useForm({
+  const { formValues, isFormDisabled, handleSubmit, handleChange, setIsFormDisabled } = useForm({
     initialValues: initialContactMessage,
     onSubmit: (values) => {
       setIsFormDisabled(true);
@@ -77,7 +77,7 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
           emailMessage: values.emailMessage,
         })
         .then((response) => {
-          if (response.status === 200 || 201) {
+          if (!response.message) {
             return response;
           }
           throw new Error('Deu ruim no envio dos dados!');
@@ -86,7 +86,6 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
           setSubmissionState(formStates.DONE);
         })
         .catch((error) => {
-          console.log('error', error);
           setSubmissionState(formStates.ERROR);
         })
         .finally(() => {
@@ -108,7 +107,7 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
         type="text"
         name="name"
         placeholder="Seu nome para contato"
-        value={values.name}
+        value={formValues.name}
         onChange={handleChange}
         autcomplete="off"
         color="black"
@@ -117,7 +116,7 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
         type="email"
         name="email"
         placeholder="Seu melhor email"
-        value={values.email}
+        value={formValues.email}
         onChange={handleChange}
         color="black"
       />
@@ -126,7 +125,7 @@ export const ContactForm = ({ modalProps, onSubmit }) => {
         tag="textarea"
         name="emailMessage"
         placeholder="Sua mensagem"
-        value={values.emailMessage}
+        value={formValues.emailMessage}
         onChange={handleChange}
         autcomplete="off"
         color="black"
