@@ -2,8 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'cypress/globals': true,
+    'jest/globals': true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:cypress/recommended', 'plugin:react/recommended', 'airbnb'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -21,11 +23,22 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'object-curly-newline': 'off',
     'react/prop-types': 'off',
-    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-body-style': 'off',
     'react/forbid-prop-types': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'operator-linebreak': 'off',
     'max-len': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.test.js'],
+      plugins: ['jest'],
+      env: {
+        jest: true,
+      },
+      // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+      ...require('eslint-plugin-jest').configs.recommended,
+    },
+  ],
 };

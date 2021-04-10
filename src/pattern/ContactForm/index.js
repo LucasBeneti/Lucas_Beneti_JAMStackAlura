@@ -2,10 +2,14 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Lottie } from '@crello/react-lottie';
+import * as yup from 'yup';
 
 import { Text } from '../../foundation/Text';
 import { TextField } from '../../form/TextField';
 import { Button } from '../../commons/Button';
+
+import { useForm } from '../../infra/hooks/useForm';
+import { contactService } from '../../services/contact/contactService';
 
 import loadingAnim from './animations/loading.json';
 import emailSuccess from './animations/email-sent.json';
@@ -19,6 +23,12 @@ const formStates = {
   DONE: 'DONE',
   ERROR: 'ERROR',
 };
+
+const contactSchema = yup.object().shape({
+  name: yup.string().required('Nome é obeigatório'),
+  email: yup.string().required('Email é obeigatório'),
+  emailMessage: yup.string().required('Mensagem é obeigatório'),
+});
 
 const ContactFormWrapper = styled.form`
   display: flex;
@@ -46,69 +56,49 @@ const ContactFormWrapper = styled.form`
   padding: 0 3rem 2rem 3rem;
 `;
 
-export const ContactForm = ({ modalProps }) => {
+export const ContactForm = ({ modalProps, onSubmit }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submissionState, setSubmissionState] = useState(formStates.DEFAULT);
-  const [contactMessage, setContactMessage] = useState({
+  const initialContactMessage = {
     name: '',
     email: '',
     emailMessage: '',
-  });
-  const isFormValid = contactMessage.name === '' || contactMessage.email === '' || contactMessage.emailMessage === '';
+  };
 
-  function checkBlankSpaces(objectToCheck) {
-    const res = Object.values(objectToCheck)
-      .map((value) => value.trim().length > 0)
-      .filter((value) => value === false);
-    return res.length === 0;
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setFormSubmitted(true);
-    setSubmissionState(formStates.LOADING);
-    if (contactMessage.email !== '' && contactMessage.name !== '' && contactMessage.emailMessage !== '') {
-      if (checkBlankSpaces(contactMessage)) {
-        const contactDTO = {
-          name: contactMessage.name,
-          email: contactMessage.email,
-          message: contactMessage.emailMessage,
-        };
-        fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contactDTO),
+  const { formValues, isFormDisabled, handleSubmit, handleChange, setIsFormDisabled } = useForm({
+    initialValues: initialContactMessage,
+    onSubmit: (values) => {
+      setIsFormDisabled(true);
+      setFormSubmitted(true);
+      contactService
+        .sendMessage({
+          name: values.name,
+          email: values.email,
+          emailMessage: values.emailMessage,
         })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error('Deu ruim no envio dos dados!');
-          })
-          .then((data) => {
-            setSubmissionState(formStates.DONE);
-          })
-          .catch((error) => {
-            setSubmissionState(formStates.ERROR);
-          });
-      } else {
-        setSubmissionState(formStates.ERROR);
-      }
-    }
-  }
-  function handleChange(event) {
-    const fieldName = event.target.getAttribute('name');
-    setContactMessage({
-      ...contactMessage,
-      [fieldName]: event.target.value,
-    });
-    setSubmissionState(formStates.DEFAULT);
-  }
+        .then((response) => {
+          if (!response.message) {
+            return response;
+          }
+          throw new Error('Deu ruim no envio dos dados!');
+        })
+        .then((data) => {
+          setSubmissionState(formStates.DONE);
+        })
+        .catch((error) => {
+          setSubmissionState(formStates.ERROR);
+        })
+        .finally(() => {
+          setIsFormDisabled(false);
+        });
+    },
+    async validateSchema(values) {
+      return contactSchema.validate(values, { abortEarly: false });
+    },
+  });
 
   return (
-    <ContactFormWrapper onSubmit={handleSubmit} {...modalProps}>
+    <ContactFormWrapper onSubmit={onSubmit || handleSubmit} {...modalProps}>
       {modalProps.CloseButton}
       <Text tag="h2" variant="titleXS" style={{ alignSelf: 'center' }}>
         Formulário de contato
@@ -117,7 +107,7 @@ export const ContactForm = ({ modalProps }) => {
         type="text"
         name="name"
         placeholder="Seu nome para contato"
-        value={contactMessage.name}
+        value={formValues.name}
         onChange={handleChange}
         autcomplete="off"
         color="black"
@@ -126,7 +116,7 @@ export const ContactForm = ({ modalProps }) => {
         type="email"
         name="email"
         placeholder="Seu melhor email"
-        value={contactMessage.email}
+        value={formValues.email}
         onChange={handleChange}
         color="black"
       />
@@ -135,13 +125,13 @@ export const ContactForm = ({ modalProps }) => {
         tag="textarea"
         name="emailMessage"
         placeholder="Sua mensagem"
-        value={contactMessage.emailMessage}
+        value={formValues.emailMessage}
         onChange={handleChange}
         autcomplete="off"
         color="black"
         height="10rem"
       />
-      <Button type="submit" disabled={isFormValid} fullWidth>
+      <Button type="submit" disabled={isFormDisabled} fullWidth>
         Enviar email
       </Button>
       {formSubmitted && submissionState === formStates.LOADING && (
