@@ -46,7 +46,7 @@ const Page404 = () => (
           Error 404
         </Text>
         <Text tag="p" variant="subtext" style={{ fontSize: '1rem' }}>
-          Não foi possível encontrar nenhum conteúdo nessa rota, por favor, dirijá-se à luz novamente, antes cque seja
+          Não foi possível encontrar nenhum conteúdo nessa rota, por favor, dirijá-se à luz novamente, antes que seja
           tarde de mais.
         </Text>
       </Page404Wrapper.Content>

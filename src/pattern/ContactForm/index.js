@@ -7,6 +7,8 @@ import { Text } from '../../foundation/Text';
 import { TextField } from '../../form/TextField';
 import { Button } from '../../commons/Button';
 
+// i
+
 import loadingAnim from './animations/loading.json';
 import emailSuccess from './animations/email-sent.json';
 import emailError from './animations/error-email.json';
